@@ -16,8 +16,18 @@ def root_data():
     data = import_data('uk-towns-sample.csv')
     return jsonify(data)
 
-@app.route('/type/<search_term>')
+@app.route('/county/<search_term>')
 def by_county(search_term):
+    data = import_data('uk-towns-sample.csv')
+    return_list = []
+    for row in data:
+        if row["county"] == search_term:
+            return_list.append(row)
+    return jsonify(return_list)
+
+
+@app.route('/type/<search_term>')
+def by_type(search_term):
     data = import_data('uk-towns-sample.csv')
     return_list = []
     for row in data:
