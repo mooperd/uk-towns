@@ -5,3 +5,4 @@ with open('/Users/sophie/Desktop/uk-towns/uk-towns-sample.csv') as csvfile:
     for row in reader:
         if row["county"] == "Warwickshire":
             print(row["name"])
+            
