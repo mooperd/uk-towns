@@ -10,7 +10,7 @@ def import_data(file_name):
         for row in reader:
                 return_list.append(row)
     return return_list
-    
+
 @app.route('/')
 def root_data():
     data = import_data('uk-towns-sample.csv')
@@ -22,6 +22,16 @@ def by_county(search_term):
     return_list = []
     for row in data:
         if row["county"] == search_term:
+            return_list.append(row)
+    return jsonify(return_list)
+
+
+@app.route('/elevation/<search_term>')
+def elevation(search_term):
+    data = import_data('uk-towns-sample.csv')
+    return_list = []
+    for row in data:
+        if int(row["elevation"]) > int(search_term):
             return_list.append(row)
     return jsonify(return_list)
 
