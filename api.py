@@ -25,12 +25,12 @@ def by_county(search_term):
             return_list.append(row)
     return jsonify(return_list)
 
-@app.route('/latlong/<search_term>')
-def by_latlong(search_term):
+@app.route('/latlong/<lat>/<long>')
+def by_latlong(lat, long):
     data = import_data('uk-towns-sample.csv')
     return_list = []
     for row in data:
-        if float(row["latitude"]) >= float(search_term) and float(row["longitude"]) <= float(search_term):
+        if float(row["latitude"]) <= float(lat) and float(row["longitude"]) >= float(long):
             return_list.append(row)
     return jsonify(return_list)
 
