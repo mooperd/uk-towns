@@ -30,7 +30,7 @@ def by_latel(search_term):
     data = import_data('uk-towns-sample.csv')
     return_list = []
     for row in data:
-        if row["latitude"] >= search_term and row["elevation"] >= search_term:
+        if row["latitude"] <= search_term and row["elevation"] >= search_term:
             return_list.append(row)
     return jsonify(return_list)
 
