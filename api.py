@@ -34,12 +34,12 @@ def by_name(search_term):
             return_list.append(row)
     return jsonify(return_list)
 
-@app.route('/country/<search_term>')
-def by_country(search_term):
+@app.route('/type/<search_term>')
+def by_type(search_term):
     data = import_data('uk-towns-sample.csv')
     return_list = []
     for row in data:
-        if row["country"] == search_term:
+        if row["type"] == search_term:
             return_list.append(row)
     return jsonify(return_list)
 
