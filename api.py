@@ -34,6 +34,16 @@ def by_name(search_term):
             return_list.append(row)
     return jsonify(return_list)
 
+@app.route('/type/<search_term>')
+def by_type(search_term):
+    data = import_data('uk-towns-sample.csv')
+    return_list = []
+    for row in data:
+        if row["type"] == search_term:
+            return_list.append(row)
+    return jsonify(return_list)
+
+master
 if __name__ == '__main__':
     app.run(debug=True)
 
